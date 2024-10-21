@@ -1,40 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 @font-face {
   font-family: 'neflite';
   src: url('./fonts/nefilt-webfont.woff2') format('woff2');
 }
 @font-face {
   font-family: 'ppfragmentsans';
-  src: url('./assets/fonts/ppfragment-sansextrabold-webfont-CLHrlGTE.woff2') format('woff2');
+  src: url('./fonts/ppfragment-sansextrabold-webfont.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: 'ppfragmentsans';
-  src: url('./assets/fonts/ppfragment-sanslight-webfont-C1C5s4e8.woff2') format('woff2');
+  src: url('./fonts/ppfragment-sanslight-webfont.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'ppfragmentserif';
-  src: url('./assets/fonts/ppfragment-serifextrabold-webfont-BCAVwGAU.woff2') format('woff2');
+  src: url('./fonts/ppfragment-serifextrabold-webfont.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: 'ppfragmentserif';
-  src: url('./assets/fonts/ppfragment-seriflight-webfont-PrHGDCr_.woff2') format('woff2');
+  src: url('./fonts/ppfragment-seriflight-webfont.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
 }
 @font-face {
   font-family: 'ppfragmentglare';
-  src: url('./assets/fonts/ppfragment-glareextrabold-webfont-BaUSOmbR.woff2') format('woff2');
+  src: url('./fonts/ppfragment-glareextrabold-webfont.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
 }
 @font-face {
   font-family: 'ppfragmentglare';
-  src: url('./assets/fonts/ppfragment-glarelight-webfont-DKVcDoCa.woff2') format('woff2');
+  src: url('./fonts/ppfragment-glarelight-webfont.woff2') format('woff2');
   font-weight: 300;
   font-style: normal;
+}
+
+html{
+  background-color: #FFF1E4 ;
 }
