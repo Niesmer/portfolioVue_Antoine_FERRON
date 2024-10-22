@@ -1,5 +1,5 @@
 <template>
-  <div v-if="['motus', 'amzzon', 'wys-app', 'dames'].includes($route.params.project)" class="about">
+  <div v-if="['motus', 'amzzon', 'wys-app', 'dames'].includes(String($route.params.project))" class="about">
     <h1>This is project {{ $route.params.project }}</h1>
   </div>
   <div v-else>
