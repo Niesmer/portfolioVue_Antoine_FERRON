@@ -7,7 +7,7 @@ const navItem = ref([]);
 let blinkTimeline: any = null;
 
 const handleMouseEnter = () => {
-  blinkTimeline = gsap.timeline({ repeat:0, });
+  blinkTimeline = gsap.timeline({ repeat: 0, });
   blinkTimeline.timeScale(2);
   blinkTimeline.to(navItem.value, {
     opacity: 0, // Fade out
@@ -46,15 +46,19 @@ onBeforeUnmount(() => {
 
 
 <template>
-  <header class="p-2 mb-2 fixed w-screen top-0 flex justify-end">
-    <nav class="rounded-full underline uppercase w-fit px-4 flex gap-4">
-      <a @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" class="grid grid-cols-2 gap-1 grid-rows-2">
-        <div class="w-4 h-4 border-black border-2 rounded-sm" v-for="(item, index) in 4" :key="index" ref="navItem">
-        </div>
-      </a>
-    </nav>
-  </header>
-  <RouterView />
+
+  <body class="mt-6 px-4">
+    <header class="p-2 mb-2 w-fit sticky ml-auto top-0 flex">
+      <nav class="rounded-full underline uppercase px-4 flex gap-4">
+        <a @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave" class="grid grid-cols-2 gap-1 grid-rows-2">
+          <div class="w-4 h-4 border-black border-2 rounded-sm" v-for="(item, index) in 4" :key="index" ref="navItem">
+          </div>
+        </a>
+      </nav>
+    </header>
+    <RouterView />
+  </body>
+
 </template>
 
 
