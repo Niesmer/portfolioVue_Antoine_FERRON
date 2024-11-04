@@ -6,7 +6,7 @@ import ProjectList from "../components/ProjectList.vue"
   <main class="grid gap-4 flex-col">
     <div class="left flex flex-col gap-2">
       <p class="text-lg">Je suis un développeur web et mobile créant des applications performantes et intuitives. Mon objectif est de transformer vos idées en réalité numérique.</p>
-      <p class="text-xl">Besoin d'un développeur ?</p>
+      <p class="text-lg">Besoin d'un développeur ?</p>
       <a href="#projets" class="text-xl flex items-baseline border-b-2 border-[#D75A00] w-fit gap-2">
         <p class="text-[#D75A00] font-bold">découvrez mon travail</p>
         <svg width="18" height="18" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -69,10 +69,10 @@ import { RouterLink, RouterView } from 'vue-router';
         </svg>
       </RouterLink>
       <div>
-        <nav class="uppercase py-4 flex gap-4 bg-[#FFF1E4]">
+        <nav class="uppercase pt-4 flex gap-4 bg-[#FFF1E4]">
           <div class="grid">
-            <RouterLink class="" to="/informations">Informations</RouterLink>
-            <RouterLink class="font-bold" to="/">Projets</RouterLink>
+            <RouterLink to="/informations">Informations</RouterLink>
+            <RouterLink to="/">Projets</RouterLink>
           </div>
         </nav>
       </div>
@@ -82,4 +82,7 @@ import { RouterLink, RouterView } from 'vue-router';
 </template>
 
 <style scoped>
+.router-link-active {
+  font-weight: 700;
+}
 </style>

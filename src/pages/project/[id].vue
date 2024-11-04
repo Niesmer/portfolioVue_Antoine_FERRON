@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from 'vue';
-import { projects } from '../data/projects';
+import { useRoute } from 'vue-router';
+import { projects } from '../../data/projects';
+const route = useRoute();
 
-const props = defineProps<{
-  project: string
-}>();
+const id = route.params.id;
 
-const projectData = projects.find((p) => p.titre === props.project);
+const projectData = projects.find((p) => p.link === id);
 if (!projectData) {
-  throw new Error(`Project with title ${props.project} not found`);
+  throw new Error(`Project with link ${id} not found`);
 }
 </script>
 
@@ -22,7 +22,8 @@ if (!projectData) {
     </div>
   </div>
   <div class="flex gap-4">
-    <img v-for="image in projectData?.img" :src="image" alt="" :key="image">
+    <img :class="{'w-1/2 min-w-20 max-h-[400px] object-contain': projectData?.img?.length == 2}" v-for="image in projectData?.img" :src="image" alt=""
+      :key="image">
   </div>
   <div class="description">{{ projectData?.description }}</div>
 </template>
@@ -32,7 +33,7 @@ h1 {
   font-family: 'ppfragmentsans';
   font-weight: 800;
   text-align: center;
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-transform: uppercase;
   margin-bottom: 15px;
 }
