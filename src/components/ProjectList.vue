@@ -2,13 +2,15 @@
 import { projects } from '@/data/projects';
 import { RouterLink } from "vue-router";
 import { TransitionGroup } from 'vue';
+
+const sortedProjects = projects.sort((a, b) => b.annee - a.annee);
 </script>
 
 <template>
-    <ul id="projets" class="flex items-center flex-col">
-        <RouterLink class="p-4 m-0.5 bg-black rounded-md w-full text-white" :to="project.link"
-            v-for="project in projects" :key="project.titre">
-            <p class="block w-full border-b-2 border-white">{{ project.titre }}</p>
+    <ul class="flex gap-2 mt-4 items-center flex-col">
+        <RouterLink class="p-6 bg-black rounded-xl w-full text-white" :to="project.link"
+            v-for="project in sortedProjects" :key="project.titre">
+            <p class="flex justify-between w-full border-b-2 border-white">{{ project.titre }}<span class="font-thin">{{ project.annee }}</span></p>
         </RouterLink>
     </ul>
 </template>
