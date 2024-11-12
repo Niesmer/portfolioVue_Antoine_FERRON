@@ -2,9 +2,11 @@
 import { ref, onMounted, onBeforeUnmount } from 'vue';
 import { gsap } from 'gsap';
 import { RouterLink, RouterView } from 'vue-router';
+import LoadView from './views/LoadView.vue';
 </script>
 
 <template>
+  <LoadView/>
   <div class="p-4">
     <header class="mb-6 w-full sticky top-0">
       <RouterLink to="/" class="flex border-b-2 bg-[#FFF1E4] z-10 relative border-[#D75A00] pt-4 pb-4 gap-[5vw]">
