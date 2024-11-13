@@ -6,9 +6,9 @@ import LoadView from './views/LoadView.vue';
 </script>
 
 <template>
-  <LoadView/>
-  <div class="p-4">
-    <header class="mb-6 w-full sticky top-0">
+<!--   <LoadView/>
+ -->  <div class="p-4">
+    <header class="mb w-full sticky top-0">
       <RouterLink to="/" class="flex border-b-2 bg-[#FFF1E4] z-10 relative border-[#D75A00] pt-4 pb-4 gap-[5vw]">
         <svg width="100%" height="100%" viewBox="0 0 600 92" version="1.1" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
@@ -71,7 +71,7 @@ import LoadView from './views/LoadView.vue';
         </svg>
       </RouterLink>
       <div>
-        <nav class="uppercase pt-4 flex gap-4 bg-[#FFF1E4]">
+        <nav class="uppercase pt-4 pb-2 flex gap-4 border-b border-[#D75A00] bg-[#FFF1E4]">
           <div class="grid">
             <RouterLink to="/informations">Informations</RouterLink>
             <RouterLink to="/">Projets</RouterLink>

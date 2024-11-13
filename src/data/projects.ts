@@ -30,16 +30,19 @@ export const projects: ProjectInterface[] = [
     annee: 2024,
   },
   {
-    titre: "Site e-commerce",
+    titre: "Site e‑commerce",
 
+    description:
+      "Ce projet est une parodis d'amazon dans le cadre de ma formation lors de ce projet j'ai réalisé une API en Syfony et un backoffice en React, afin de gérer les produits d'une boutique. La partie boutique n'as pas été réalisé",
     link: "amzzon",
     annee: 2023,
   },
   {
     titre: "WebApp WYS",
     tags: ["Web", "React", "Stage"],
-    img:["/src/assets/images/Wys/WebAppv1.png"],
-    description: "Ce projet est réalisé lors d'un stage dans l'entreprise win your star, cette webapp est une version numérique du jeu d'intelligence emotionnelle WYS. J'ai été en charge de repenser et d'implémenter une nouvelle interface front avec Figma et React.",
+    img: ["/src/assets/images/Wys/WebAppv1.png"],
+    description:
+      "Ce projet est réalisé lors d'un stage dans l'entreprise win your star, cette webapp est une version numérique du jeu d'intelligence emotionnelle WYS. J'ai été en charge de repenser et d'implémenter une nouvelle interface front avec Figma et React.",
 
     link: "wys-app",
     annee: 2024,
