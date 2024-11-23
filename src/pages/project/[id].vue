@@ -13,19 +13,21 @@ if (!projectData) {
 </script>
 
 <template>
-  <div class="grid justify-center pb-6">
-    <h1>{{ projectData?.titre }}</h1>
-    <div class="flex flex-wrap justify-center gap-2 ">
-      <h2 class="rounded-full py-1 px-3" v-for="tag in projectData.tags" :key="tag">
-        {{ tag }}
-      </h2>
+  <div>
+    <div class="grid justify-center pb-6">
+      <h1>{{ projectData?.titre }}</h1>
+      <div class="flex flex-wrap justify-center gap-2 ">
+        <h2 class="rounded-full py-1 px-3" v-for="tag in projectData.tags" :key="tag">
+          {{ tag }}
+        </h2>
+      </div>
     </div>
+    <div class="flex gap-4">
+      <img :class="{ 'w-1/2 min-w-20 max-h-[400px] object-contain': projectData?.img?.length == 2 }"
+        v-for="image in projectData?.img" :src="image" alt="" :key="image">
+    </div>
+    <div class="description">{{ projectData?.description }}</div>
   </div>
-  <div class="flex gap-4">
-    <img :class="{'w-1/2 min-w-20 max-h-[400px] object-contain': projectData?.img?.length == 2}" v-for="image in projectData?.img" :src="image" alt=""
-      :key="image">
-  </div>
-  <div class="description">{{ projectData?.description }}</div>
 </template>
 
 <style>

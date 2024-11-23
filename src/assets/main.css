@@ -46,4 +46,15 @@
 
 html{
   background-color: #FFF1E4 ;
+  scroll-behavior: smooth;
+}
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
 }

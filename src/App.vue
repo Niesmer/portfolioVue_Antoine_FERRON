@@ -1,13 +1,48 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, onMounted, onBeforeUnmount, Transition } from 'vue';
 import { gsap } from 'gsap';
 import { RouterLink, RouterView } from 'vue-router';
 import LoadView from './views/LoadView.vue';
+
+const nav = ref<HTMLElement | null>(null);
+
+let lastScrollY = 0;
+
+const handleScroll = () => {
+  const currentScrollY = window.scrollY;
+
+  if (nav.value) {
+    if (currentScrollY > lastScrollY) {
+      // Scrolling down, hide the navigation bar
+      gsap.to(nav.value, {
+        y: -nav.value.offsetHeight, // Slide up by its height
+        duration: 0.5,
+        ease: 'power2.inOut',
+      });
+    } else if (currentScrollY < lastScrollY) {
+      // Scrolling up, show the navigation bar
+      gsap.to(nav.value, {
+        y: 0, // Return to its original position
+        duration: 0.5,
+        ease: 'power2.inOut',
+      });
+    }
+  }
+
+  lastScrollY = currentScrollY; // Update last scroll position
+};
+window.addEventListener('scroll', handleScroll);
+
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
+
+});
 </script>
 
 <template>
-<!--   <LoadView/>
- -->  <div class="p-4">
+  <!--   <LoadView/>
+ -->
+  <div class="p-4">
     <header class="mb w-full sticky top-0">
       <RouterLink to="/" class="flex border-b-2 bg-[#FFF1E4] z-10 relative border-[#D75A00] pt-4 pb-4 gap-[5vw]">
         <svg width="100%" height="100%" viewBox="0 0 600 92" version="1.1" xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +106,7 @@ import LoadView from './views/LoadView.vue';
         </svg>
       </RouterLink>
       <div>
-        <nav class="uppercase pt-4 pb-2 flex gap-4 border-b border-[#D75A00] bg-[#FFF1E4]">
+        <nav ref="nav" class="uppercase pt-4 pb-2 flex gap-4 border-b border-[#D75A00] bg-[#FFF1E4]">
           <div class="grid">
             <RouterLink to="/informations">Informations</RouterLink>
             <RouterLink to="/">Projets</RouterLink>
@@ -79,7 +114,11 @@ import LoadView from './views/LoadView.vue';
         </nav>
       </div>
     </header>
-    <RouterView />
+    <RouterView v-slot="{ Component }">
+      <Transition mode="out-in">
+        <component v-if="Component" :is="Component" />
+      </Transition>
+    </RouterView>
   </div>
 </template>
 
