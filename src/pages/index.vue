@@ -3,10 +3,11 @@ import ProjectList from "../components/ProjectList.vue"
 </script>
 
 <template>
-  <main class="grid gap-4 flex-col">
-    <div class="left flex flex-col gap-2 justify-end h-[85vh] pb-[10vh]">
-      <p class="text-2xl">Je suis un développeur web et mobile créant des applications performantes et intuitives. Mon objectif est de transformer vos idées en réalité numérique.</p>
-      <p class="text-xl font-bold">Besoin d'un développeur ?</p>
+  <main class="grid gap-4">
+    <div class="left grid-rows-2 grid gap-6 justify-center h-[85vh] pb-[15vh]">
+      <p class="self-end text-xl">Je suis un <strong>développeur web et android</strong> créant des applications performantes et intuitives.</p>
+      <div class="self-top">
+        <p class="text-xl font-bold">Besoin d'un développeur ?</p>
       <a href="#projets" class="text-xl flex items-baseline border-b-2 border-[#D75A00] w-fit gap-2">
         <p class="text-[#D75A00] font-bold">découvrez mon travail</p>
         <svg width="15" height="15" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -15,8 +16,10 @@ import ProjectList from "../components/ProjectList.vue"
             fill="#D75A00" />
         </svg>
       </a>
+      </div>
+      
     </div>
-    <div id="projets" class="projets">
+    <div id="projets" class="projets h-[80vh]">
       <p class="border-b-2 border- border-black w-fit text-xl">Mes projets</p>
       <ProjectList />
     </div>
