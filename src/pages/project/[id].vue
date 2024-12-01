@@ -2,7 +2,7 @@
 import { defineProps } from 'vue';
 import { useRoute } from 'vue-router';
 import { projects } from '../../data/projects';
-const route = useRoute();
+const route = useRoute() as { params: { id: string } };
 
 const id = route.params.id;
 

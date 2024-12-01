@@ -1,12 +1,12 @@
 <template>
-    <li class="w-full text-white p-6 rounded-xl bg-black block">
+    <li ref="button" class="w-full text-white select-none p-6 rounded-xl bg-black block">
         <p class="flex justify-between w-full border-b-2 border-white">
             {{ project.titre }}
             <span class="font-thin">{{ project.annee }}</span>
         </p>
         <div ref="content" class="h-0 grid gap-6 overflow-hidden">
             <p class="pt-4">{{ project.description }}</p>
-            <RouterLink class="justify-self-center bg-gray-400 p-2 rounded-xl" :to="'project/' + project.link || '/'">Voir plus</RouterLink>
+            <RouterLink class="justify-self-center bg-slate-800 p-2 rounded-xl" :to="'project/' + project.link || '/'">Voir plus</RouterLink>
         </div>
     </li>
 </template>
@@ -22,16 +22,30 @@ const props = defineProps<{
 }>();
 
 const content = ref<HTMLElement | null>(null);
+const button = ref<HTMLElement | null>(null);
 
 watch(() => props.isExpanded, (newVal) => {
     if (content.value) {
         if (newVal) {
+            popAnimation(button.value);
             enter(content.value);
         } else {
+            popAnimation(button.value);
             leave(content.value);
         }
     }
 });
+
+const popAnimation = (el: Element | null) => {
+    gsap.fromTo(el, {
+        scale: 1
+    }, {
+        scale: 1.03,
+        duration: 0.1,
+        repeat: 1,
+        yoyo: true
+    });
+}
 
 const enter = (el: Element) => {
     gsap.to(el, {
