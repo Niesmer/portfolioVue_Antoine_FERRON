@@ -3,6 +3,7 @@ export interface ProjectInterface {
   tags?: string[];
   objectif?: string;
   description?: string;
+  LongerDescription?: string;
   img?: string[];
   vid?: {
     vidsrc?: string;
@@ -16,6 +17,12 @@ export interface ProjectInterface {
 }
 
 export const projects: ProjectInterface[] = [
+  {
+    titre: "D'une Halles à l'autre",
+    description:"",
+    link: "halles",
+    annee: 2024,
+  },
   {
     titre: "Space hokey",
     tags: ["Android", "Java", "Game", "Duo"],
@@ -47,12 +54,7 @@ export const projects: ProjectInterface[] = [
     link: "wys-app",
     annee: 2024,
   },
-  {
-    titre: "Dames",
 
-    link: "dames",
-    annee: 2024,
-  },
   {
     titre: "Carte interactive",
     link: "map-iut",
