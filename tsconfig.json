@@ -1,9 +1,24 @@
 {
   "files": [],
 
-  "include": ["./typed-router.d.ts"],
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
   "compilerOptions": {
-    "types": ["unplugin-vue-router/client"]
+    "types": ["unplugin-vue-router/client"],
+    "target": "es2015", // or later, e.g., "es2017"
+    "lib": ["es2015", "dom"], // or later, e.g., ["es2017", "dom"]
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "jsx": "preserve",
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
   },
   "references": [
     {
@@ -12,5 +27,6 @@
     {
       "path": "./tsconfig.app.json"
     }
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

@@ -2,9 +2,9 @@
 import { defineProps } from 'vue';
 import { useRoute } from 'vue-router';
 import { projects } from '../../data/projects';
-const route = useRoute() as { params: { id: string } };
+const route = useRoute();
+const id = (route.params as { id: string }).id;
 
-const id = route.params.id;
 
 const projectData = projects.find((p) => p.link === id);
 if (!projectData) {
