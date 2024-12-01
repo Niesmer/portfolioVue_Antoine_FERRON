@@ -1,20 +1,24 @@
-<script setup>
+<script setup lang="ts">
+import { ref } from 'vue';
 import { projects } from '@/data/projects';
-import { RouterLink } from "vue-router";
-import { TransitionGroup } from 'vue';
+import ProjectItem from './ProjectItem.vue';
 
-const sortedProjects = projects.sort((a, b) => b.annee - a.annee);
+const sortedProjects = projects.sort((a, b) => (b.annee ?? 0) - (a.annee ?? 0));
+const expandedProjectTitle = ref<string | null>(null);
+
+const toggleExpand = (projectTitle: string) => {
+    expandedProjectTitle.value = expandedProjectTitle.value === projectTitle ? null : projectTitle;
+}
 </script>
 
 <template>
     <ul class="flex gap-2 mt-4 items-center flex-col">
-        <RouterLink class="p-6 bg-black rounded-xl w-full text-white" :to="`project/${project.link}`"
-            v-for="project in sortedProjects" :key="project.titre">
-            <p class="flex justify-between w-full border-b-2 border-white">{{ project.titre }}<span class="font-thin">{{ project.annee }}</span></p>
-        </RouterLink>
+        <ProjectItem @click="toggleExpand(project.titre ?? '')"
+            v-for="project in sortedProjects" 
+            :key="project.titre" 
+            :project="project" 
+            :is-expanded="expandedProjectTitle === project.titre"
+            @toggle-expand="toggleExpand(project.titre ?? '')"
+        />
     </ul>
 </template>
-
-
-
-<style></style>

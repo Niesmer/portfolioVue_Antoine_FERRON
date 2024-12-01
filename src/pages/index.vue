@@ -4,7 +4,7 @@ import ProjectList from "../components/ProjectList.vue"
 
 <template>
   <main class="grid gap-4">
-    <div class="left grid-rows-2 grid gap-6 justify-center h-[85vh] pb-[15vh]">
+    <div class="left grid-rows-2 grid gap-20 pt-32 justify-center h-[85vh] pb-[15vh]">
       <p class="self-end text-xl">Je suis un <strong>développeur web et android</strong> créant des applications performantes et intuitives.</p>
       <div class="self-top">
         <p class="text-xl font-bold">Besoin d'un développeur ?</p>
@@ -19,7 +19,7 @@ import ProjectList from "../components/ProjectList.vue"
       </div>
       
     </div>
-    <div id="projets" class="projets h-[80vh]">
+    <div id="projets" class="projets h-[85vh]">
       <p class="border-b-2 border- border-black w-fit text-xl">Mes projets</p>
       <ProjectList />
     </div>
