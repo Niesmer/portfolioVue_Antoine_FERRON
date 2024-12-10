@@ -5,8 +5,8 @@ import ProjectList from "../components/ProjectList.vue"
 <template>
   <main class="grid gap-4">
     <div class="left grid-rows-2 grid gap-20 pt-32 justify-center h-[85vh] pb-[15vh]">
-      <p class="self-end text-xl">Je suis un <strong>développeur web</strong> et <strong>android</strong> passioné par le
-        développement web, la musique et les nouvelles technologies.</p>
+      <p class="self-end text-xl">Je suis un <strong>développeur web</strong> et <strong>android</strong> passioné par
+        les nouvelles technologies, la musique et l'automobile.</p>
       <div class="self-top">
         <p class="text-xl font-bold">Besoin d'un développeur ?</p>
         <a href="#projets" class="text-xl flex items-baseline border-b-2 border-[#D75A00] w-fit gap-2">

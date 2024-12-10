@@ -19,7 +19,7 @@ export interface ProjectInterface {
 export const projects: ProjectInterface[] = [
   {
     titre: "D'une Halles à l'autre",
-    description:"",
+    description:"Réalisé en partenariat avec Laval Patrimoine cette application est un jeux d'enigme en Réalité Virtuelle et Mobile, le but est de découvrir l'histoire des halles de Laval de manière ludique",
     link: "halles",
     annee: 2024,
   },

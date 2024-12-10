@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { defineProps } from 'vue';
 import { useRoute } from 'vue-router';
-import { projects } from '../../data/projects';
+import { projects } from '../../assets/data/projects';
+import Flicking from '@egjs/vue3-flicking';
+import { Perspective } from '@egjs/flicking-plugins'
 const route = useRoute();
 const id = (route.params as { id: string }).id;
-
-
+const perspective = [new Perspective({ rotate: 0.2, perspective: 500, scale: 0.4 })]
 const projectData = projects.find((p) => p.link === id);
 if (!projectData) {
   throw new Error(`Project with link ${id} not found`);
@@ -22,10 +22,12 @@ if (!projectData) {
         </h2>
       </div>
     </div>
-    <div class="flex gap-4">
-      <img :class="{ 'w-1/2 min-w-20 max-h-[400px] object-contain': projectData?.img?.length == 2 }"
-        v-for="image in projectData?.img" :src="image" alt="" :key="image">
-    </div>
+    <Flicking class="z-0 overflow-visible" :options="{ align: 'center', circular: true }" :plugins="perspective">
+      <div class="flicking-panel max-h-fit h-52 w-1/3 justify-center flex select-none" v-for="image in projectData?.img"
+        :key="image">
+        <img class="select-none object-contain" draggable="false" :src="image">
+      </div>
+    </Flicking>
     <div class="description">{{ projectData?.description }}</div>
   </div>
 </template>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { projects } from '../data/projects';
+import { projects } from '../assets/data/projects';
 
 const props = defineProps<{
   project: string

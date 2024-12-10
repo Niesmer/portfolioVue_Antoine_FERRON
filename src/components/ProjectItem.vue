@@ -4,15 +4,15 @@
             {{ project.titre }}
             <span class="font-thin">{{ project.annee }}</span>
         </p>
-        <div ref="content" class="h-0 grid gap-6 overflow-hidden">
+        <div ref="content" class="h-0 font-normal grid gap-6 overflow-hidden">
             <p class="pt-4">{{ project.description }}</p>
-            <RouterLink class="justify-self-center bg-slate-800 p-2 rounded-xl" :to="'project/' + project.link || '/'">Voir plus</RouterLink>
+            <RouterLink class="justify-self-center bg-slate-800 p-2 font-bold rounded-xl" :to="'project/' + project.link || '/'">Voir plus</RouterLink>
         </div>
     </li>
 </template>
 
 <script setup lang="ts">
-import type { ProjectInterface } from '@/data/projects';
+import type { ProjectInterface } from '@/assets/data/projects';
 import gsap from 'gsap';
 import { ref, watch } from 'vue';
 

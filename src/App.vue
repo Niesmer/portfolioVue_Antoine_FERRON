@@ -1,8 +1,8 @@
 <template>
   <div class="p-4">
 
-    <header class="mb w-full sticky top-0">
-      <RouterLink to="/" class="flex border-b-2 bg-[#FFF1E4] z-10 relative border-[#D75A00] pt-4 pb-4 gap-[5vw]">
+    <header class="mb w-full z-10 sticky top-0">
+      <RouterLink to="/" class="flex border-b-2 bg-[#FFF1E4] z-20 relative border-[#D75A00] pt-4 pb-4 gap-[5vw]">
         <svg width="100%" height="100%" viewBox="0 0 600 92" version="1.1" xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
           style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">

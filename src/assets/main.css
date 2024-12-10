@@ -1,7 +1,7 @@
+@import url("../../node_modules/@egjs/vue3-flicking/dist/flicking.css");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 
 @font-face {
   font-family: 'humane';
