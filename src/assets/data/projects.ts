@@ -32,7 +32,6 @@ export const projects: ProjectInterface[] = [
     ],
     description:
       "Ce projet est un jeu android lors duquel j’ai majoritairement été en charge des fonctionnalités du jeu tel que la gravité le score la détection du toucher.",
-
     link: "space-hokey",
     annee: 2024,
   },
