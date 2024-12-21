@@ -1,10 +1,11 @@
 <script setup>
+import SlideTransition from "@/components/SlideTransition.vue";
 import ProjectList from "../components/ProjectList.vue"
 </script>
 
 <template>
   <main class="grid gap-4">
-    <div class="left grid-rows-2 grid gap-20 pt-32 justify-center h-[85vh] pb-[15vh]">
+    <div class="left px-4 grid-rows-2 grid gap-20 pt-32 justify-center h-[85vh] pb-[15vh]">
       <p class="self-end text-xl">Je suis un <strong>développeur web</strong> et <strong>android</strong> passioné par
         les nouvelles technologies, la musique et l'automobile.</p>
       <div class="self-top">
@@ -21,7 +22,7 @@ import ProjectList from "../components/ProjectList.vue"
 
     </div>
     <div id="projets" class="projets h-[85vh]">
-      <p class="border-b-2 border- border-black w-fit text-xl">Mes projets</p>
+      <p class="mx-4 border-b-2 border- border-black w-fit text-xl">Mes projets</p>
       <ProjectList />
     </div>
   </main>

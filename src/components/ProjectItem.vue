@@ -1,13 +1,14 @@
 <template>
-    <li ref="button" class="w-full text-white select-none p-6 rounded-xl bg-black block">
-        <!-- <p class="flex justify-between w-full border-b-2 border-white">
+    <li ref="button" class=" w-11/12 text-white select-none p-6 rounded-xl bg-black block">
+        <p class="flex justify-between w-full border-b-2 border-white">
             {{ project.titre }}
             <span class="font-thin">{{ project.annee }}</span>
         </p>
         <div ref="content" class="h-0 font-normal grid gap-6 overflow-hidden">
             <p class="pt-4">{{ project.description }}</p>
-            <RouterLink class="justify-self-center bg-slate-800 p-2 font-bold rounded-xl" :to="'project/' + project.link || '/'">Voir plus</RouterLink>
-        </div> -->
+            <RouterLink @click.stop="" class="justify-self-center bg-slate-800 p-2 font-bold rounded-xl"
+                :to="'project/' + project.link || '/'">Voir plus</RouterLink>
+        </div>
     </li>
 </template>
 
@@ -18,7 +19,7 @@ import { ref, watch } from 'vue';
 
 const props = defineProps<{
     project: ProjectInterface,
-    isExpanded: boolean
+    isExpanded: boolean,
 }>();
 
 const content = ref<HTMLElement | null>(null);

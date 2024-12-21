@@ -3,6 +3,8 @@ import { useRoute } from 'vue-router';
 import { projects } from '../../assets/data/projects';
 import Flicking from '@egjs/vue3-flicking';
 import { Perspective } from '@egjs/flicking-plugins'
+import { onMounted } from 'vue';
+import gsap from 'gsap';
 const route = useRoute();
 const id = (route.params as { id: string }).id;
 const perspective = [new Perspective({ rotate: 0.2, perspective: 500, scale: 0.4 })]
@@ -10,10 +12,27 @@ const projectData = projects.find((p) => p.link === id);
 if (!projectData) {
   throw new Error(`Project with link ${id} not found`);
 }
+onMounted(() => {
+  const transition = document.getElementById('transition');
+  if (transition) {
+    gsap.to(transition, {
+      x: -window.innerWidth,
+      duration: 0.8,
+      ease: 'power2.inOut',
+      delay: 0.5,
+      onComplete: () => {
+        transition.style.display = 'none';
+      }
+    })
+  }
+})
 </script>
 
 <template>
-  <div>
+  <div class="w-screen h-screen flex items-center justify-center bg-black fixed z-20 top-0" id="transition">
+    <p class="text-white ppfragment uppercase font-bold text-xl">{{ projectData?.titre }}</p>
+  </div>
+  <div class="px-4">
     <div class="grid justify-center pb-6">
       <h1>{{ projectData?.titre }}</h1>
       <div class="flex flex-wrap justify-center gap-2 ">

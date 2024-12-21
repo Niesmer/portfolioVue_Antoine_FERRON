@@ -48,3 +48,7 @@ html{
   background-color: #FFF1E4 ;
   scroll-behavior: smooth;
 }
+
+.ppfragment{
+  font-family: 'ppfragmentsans', sans-serif;
+}
