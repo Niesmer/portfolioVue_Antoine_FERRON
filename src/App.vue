@@ -72,6 +72,7 @@
         </nav>
       </div>
     </header>
+    <SlideTransition :projectTitle="chosenProject" :entering="isAnimating" />
     <RouterView v-slot="{ Component }">
       <component v-if="Component" :is="Component" />
     </RouterView>
@@ -82,69 +83,67 @@
 import { ref, onMounted, onBeforeUnmount, Transition, type VNodeRef } from 'vue';
 import { gsap } from 'gsap';
 import { RouterLink, RouterView } from 'vue-router';
+import SlideTransition from './components/SlideTransition.vue';
+import { storeToRefs } from 'pinia';
+import { useProjectStore } from '@/store/globalStore';
+import { ScrollTrigger } from 'gsap/all';
+gsap.registerPlugin(ScrollTrigger);
+
 
 const nav = ref<HTMLElement | null>(null);
+let navAnimationStarted = false;
 
-let lastScrollY = 0;
+const store = useProjectStore();
 
-const overlay = ref<HTMLElement | null>(null);
+const { chosenProject, isAnimating } = storeToRefs(store)
 
-const showOverlay = () => {
-  if (overlay.value) {
-    gsap.to(overlay.value, {
-      opacity: 1,
-      duration: 0.5,
-      ease: 'power2.inOut',
 
-    })
-  }
 
-};
-
-const hideOverlay = () => {
-  if (overlay.value) {
-    gsap.to(overlay.value, {
-      opacity: 0,
-      duration: 0.5,
-      ease: 'power2.inOut',
-      onComplete: () => {
-        console.log(overlay.value);
-
-        if (overlay.value) {
-          overlay.value.style.display = 'none';
+onMounted(() => {
+  ScrollTrigger.create({
+    start: 0,
+    trigger: document.body, // Attach ScrollTrigger globally
+    onUpdate: (self) => {
+      if (nav.value) {
+        if (self.direction === 1) {
+          if (self.direction === 1 && navAnimationStarted) {
+            return;
+          }
+          // Scrolling down, hide the navigation bar
+          navAnimationStarted = true;
+          gsap.to(nav.value, {
+            y: -nav.value.offsetHeight,
+            duration: 0.5,
+            ease: 'power2.inOut',
+            overwrite: 'auto', // Ensure only relevant animations run
+            onComplete: () => {
+              navAnimationStarted = false;
+            },
+          });
+        } else if (self.direction === -1) {
+          if (self.direction === -1 && navAnimationStarted) {
+            return;
+          }
+          // Scrolling up, show the navigation bar
+          navAnimationStarted = true;
+          gsap.to(nav.value, {
+            y: 0,
+            duration: 0.3,
+            ease: 'power2.inOut',
+            overwrite: 'auto',
+            onComplete: () => {
+              navAnimationStarted = false;
+            },
+          });
         }
       }
-    });
-  }
-};
-
-const handleScroll = () => {
-  const currentScrollY = window.scrollY;
-
-  if (nav.value) {
-    if (currentScrollY > lastScrollY) {
-      // Scrolling down, hide the navigation bar
-      gsap.to(nav.value, {
-        y: -nav.value.offsetHeight, // Slide up by its height
-        duration: 0.5,
-        ease: 'power2.inOut',
-      });
-    } else if (currentScrollY < lastScrollY) {
-      // Scrolling up, show the navigation bar
-      gsap.to(nav.value, {
-        y: 0, // Return to its original position
-        duration: 0.5,
-        ease: 'power2.inOut',
-      });
-    }
-  }
-
-  lastScrollY = currentScrollY; // Update last scroll position
-};
-window.addEventListener('scroll', handleScroll);
+    },
+    fastScrollEnd: true, // Immediately detect end of scrolling
+  });
+});
 
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll);
+  ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 });
 </script>
 

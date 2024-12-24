@@ -1,15 +1,16 @@
-<script setup>
-/**
- * @type {{ projectTitle: string | null, state: int }}
- */
-const props = defineProps();
+<script setup lang="ts">
+import gsap from 'gsap';
+import { onMounted } from 'vue';
+import { onBeforeRouteLeave } from 'vue-router';
+
+const props = defineProps<{ projectTitle?: string; entering: boolean }>();
 
 onMounted(() => {
     const transition = document.getElementById('transition');
     if (!transition) {
         return;
     }
-    if (props.entering === 1) {
+    if (!props.entering) {
         gsap.to(transition, {
             x: -window.innerWidth,
             duration: 0.8,
@@ -18,17 +19,30 @@ onMounted(() => {
             onComplete: () => {
                 transition.style.display = 'none';
             }
-        })
-    } else if (props.entering === 2) {
-        transition.style.display = 'block';
+        });
+    } else if (props.entering) {
+        transition.style.display = 'flex';
         gsap.to(transition, {
             x: 0,
             duration: 0.8,
             ease: 'power2.inOut',
             delay: 0.5,
-        })
+        });
     }
+});
 
+onBeforeRouteLeave(()=>{
+    const transition = document.getElementById('transition');
+    if (!transition) {
+        return;
+    }
+    transition.style.display = 'flex';
+    gsap.to(transition, {
+        x: 0,
+        duration: 0.8,
+        ease: 'power2.inOut',
+        delay: 0.5,
+    });
 })
 </script>
 
