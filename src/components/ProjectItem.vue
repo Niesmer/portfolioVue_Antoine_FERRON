@@ -1,5 +1,5 @@
 <template>
-    <li ref="button" class=" w-11/12 text-white select-none p-6 rounded-xl bg-black block">
+    <li @mouseenter="!isExpanded && popAnimation($refs.button)" ref="button" class=" w-full text-white select-none p-6 rounded-xl bg-black block lg:cursor-pointer">
         <p class="flex justify-between w-full border-b-2 border-white">
             {{ project.titre }}
             <span class="font-thin">{{ project.annee }}</span>
@@ -7,7 +7,7 @@
         <div ref="content" class="h-0 font-normal grid gap-6 overflow-hidden">
             <p class="pt-4">{{ project.description }}</p>
             <RouterLink @click.stop="" class="justify-self-center bg-slate-800 p-2 font-bold rounded-xl"
-                :to="'project/' + project.link || '/'">Voir plus</RouterLink>
+                :to="'project/' + project.link || '/'">En apprendre plus</RouterLink>
         </div>
     </li>
 </template>
@@ -38,14 +38,25 @@ watch(() => props.isExpanded, (newVal) => {
 });
 
 const popAnimation = (el: Element | null) => {
-    gsap.fromTo(el, {
-        scale: 1
-    }, {
-        scale: 1.03,
-        duration: 0.1,
-        repeat: 1,
-        yoyo: true
-    });
+    if (window.innerWidth < 768) {
+        gsap.fromTo(el, {
+            scale: 1
+        }, {
+            scale: 1.03,
+            duration: 0.1,
+            repeat: 1,
+            yoyo: true
+        });
+    } else {
+        gsap.fromTo(el, {
+            scale: 1
+        }, {
+            scale:1.015,
+            duration: 0.1,
+            repeat: 1,
+            yoyo: true
+        });
+    }
 }
 
 const enter = (el: Element) => {

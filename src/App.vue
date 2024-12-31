@@ -72,9 +72,9 @@
         </nav>
       </div>
     </header>
-    <SlideTransition :projectTitle="chosenProject" :entering="isAnimating" />
+    <SlideTransition :projectTitle="chosenProject"/>
     <RouterView v-slot="{ Component }">
-      <component v-if="Component" :is="Component" />
+        <component v-if="Component" :is="Component" />
     </RouterView>
   </div>
 </template>
@@ -102,6 +102,7 @@ const { chosenProject, isAnimating } = storeToRefs(store)
 onMounted(() => {
   ScrollTrigger.create({
     start: 0,
+    end: window.innerHeight,
     trigger: document.body, // Attach ScrollTrigger globally
     onUpdate: (self) => {
       if (nav.value) {
@@ -113,6 +114,8 @@ onMounted(() => {
           navAnimationStarted = true;
           gsap.to(nav.value, {
             y: -nav.value.offsetHeight,
+            height:0,
+            overflow:"hidden",
             duration: 0.5,
             ease: 'power2.inOut',
             overwrite: 'auto', // Ensure only relevant animations run
@@ -128,6 +131,8 @@ onMounted(() => {
           navAnimationStarted = true;
           gsap.to(nav.value, {
             y: 0,
+            height:'auto',
+            overflow:"auto",
             duration: 0.3,
             ease: 'power2.inOut',
             overwrite: 'auto',

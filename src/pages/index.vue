@@ -1,16 +1,36 @@
 <script setup>
 import SlideTransition from "@/components/SlideTransition.vue";
 import ProjectList from "../components/ProjectList.vue"
+import { onMounted, onUnmounted, ref } from "vue";
+
+let isLg = ref(false);
+
+const updateisLg = () => {
+  isLg.value = window.innerWidth > 1024;
+};
+
+onMounted(() => {
+  updateisLg();
+  window.addEventListener('resize', updateisLg);
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', updateisLg);
+});
 </script>
 
 <template>
   <main class="grid gap-4">
-    <div class="left px-4 grid-rows-2 grid gap-20 pt-32 justify-center h-[85vh] pb-[15vh]">
-      <p class="self-end text-xl">Je suis un <strong>développeur web</strong> et <strong>android</strong> passioné par
+    <div class="left px-4 grid-rows-2 grid gap-20 pt-32 justify-center h-[85vh] pb-[15vh] lg:px-8 lg:grid-cols-2">
+      <div class="col-start-1 row-start-2 text-5xl font-extrabold" v-if="isLg">
+        <p class="w-fit border-b-8 border-[#D75A00]">Développeur WEB</p>
+      </div>
+      <p class="self-end text-xl lg:col-start-2">Je suis un <strong>développeur web</strong> et <strong>android</strong>
+        passioné par
         les nouvelles technologies, la musique et l'automobile.</p>
       <div class="self-top">
         <p class="text-xl font-bold">Besoin d'un développeur ?</p>
-        <a href="#projets" class="text-xl flex items-baseline border-b-2 border-[#D75A00] w-fit gap-2">
+        <a href="#projets" class="text-xl flex items-baseline border-b-2 border-[#D75A00] w-fit gap-2 ">
           <p class="text-[#D75A00] font-bold">découvrez mon travail</p>
           <svg width="15" height="15" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -19,7 +39,6 @@ import ProjectList from "../components/ProjectList.vue"
           </svg>
         </a>
       </div>
-
     </div>
     <div id="projets" class="projets h-[85vh]">
       <p class="mx-4 border-b-2 border- border-black w-fit text-xl">Mes projets</p>
