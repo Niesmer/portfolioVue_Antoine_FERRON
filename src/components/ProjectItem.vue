@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import type { ProjectInterface } from '@/assets/data/projects';
+import type { ProjectInterface } from '../assets/data/projects';
 import gsap from 'gsap';
 import { ref, watch } from 'vue';
 

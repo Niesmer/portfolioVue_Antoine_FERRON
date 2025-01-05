@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { projects } from '@/assets/data/projects';
+import { projects } from '../assets/data/projects';
 import ProjectItem from './ProjectItem.vue';
 
 const sortedProjects = projects.sort((a, b) => (b.annee ?? 0) - (a.annee ?? 0));

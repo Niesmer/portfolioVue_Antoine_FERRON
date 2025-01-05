@@ -85,7 +85,7 @@ import { gsap } from 'gsap';
 import { RouterLink, RouterView } from 'vue-router';
 import SlideTransition from './components/SlideTransition.vue';
 import { storeToRefs } from 'pinia';
-import { useProjectStore } from '@/store/globalStore';
+import { useProjectStore } from './store/globalStore';
 import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 

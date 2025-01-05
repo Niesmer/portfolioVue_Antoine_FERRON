@@ -1,4 +1,4 @@
-import { projects, type ProjectInterface } from "@/assets/data/projects";
+import { projects, type ProjectInterface } from "../assets/data/projects";
 import { defineStore } from "pinia";
 
 export const useProjectStore = defineStore("project", {
