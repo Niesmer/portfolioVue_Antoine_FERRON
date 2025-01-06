@@ -46,6 +46,7 @@
 
 html{
   background-color: #FFF1E4 ;
+  overflow-anchor: none;
 }
 
 .ppfragment{

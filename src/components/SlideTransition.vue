@@ -2,13 +2,13 @@
 import gsap from 'gsap';
 import { onMounted } from 'vue';
 import { useRouter } from 'vue-router';
-
-
-const props = defineProps<{ projectTitle?: string }>();
-
+import { projects } from '../assets/data/projects';
+import { useProjectStore } from '../store/globalStore';
+import { storeToRefs } from 'pinia';
 
 
 let transition: HTMLElement | null;
+const { chosenProject } = storeToRefs(useProjectStore());
 
 onMounted(() => {
     transition = document.getElementById('transition');
@@ -71,16 +71,17 @@ router.afterEach(async (to, from) => {
 
 
     // Case 3: Navigating from a project
-    if (from.path.startsWith('/project') && window.history.state && window.history.state.back) {
+    if (from.path.startsWith('/project') && from.name) {
         triggerTransition(1);
     }
 })
 
 router.beforeEach(async (to, from, next) => {
     if (to.path.startsWith('/project') && from.name) {
-        await triggerTransition(-1);
         let { id: chosenProjectLink } = to.params;
-
+        let projectData = projects.find((p) => p.link === chosenProjectLink);
+        chosenProject.value = projectData?.titre || '';
+        await triggerTransition(-1);
         return next();
     }
 
@@ -88,7 +89,8 @@ router.beforeEach(async (to, from, next) => {
 
 
     // Case 3: Navigating from a project
-    if (from.path.startsWith('/project') && window.history.state && window.history.state.back) {
+    if (from.path.startsWith('/project') && from.name) {
+        chosenProject.value = 'Projets';
         await triggerTransition(-2);
         return next();
     }
@@ -100,7 +102,7 @@ router.beforeEach(async (to, from, next) => {
 
 <template>
     <div class="w-screen h-screen hidden items-center justify-center bg-black fixed z-20 top-0" id="transition">
-        <p class="text-white uppercase font-bold text-xl">{{ props.projectTitle }}</p>
+        <p class="text-white uppercase font-bold text-xl">{{ chosenProject }}</p>
     </div>
     <slot></slot>
 </template>

@@ -72,9 +72,9 @@
         </nav>
       </div>
     </header>
-    <SlideTransition :projectTitle="chosenProject"/>
+    <SlideTransition />
     <RouterView v-slot="{ Component }">
-        <component v-if="Component" :is="Component" />
+      <component v-if="Component" :is="Component" />
     </RouterView>
   </div>
 </template>
@@ -84,19 +84,12 @@ import { ref, onMounted, onBeforeUnmount, Transition, type VNodeRef } from 'vue'
 import { gsap } from 'gsap';
 import { RouterLink, RouterView } from 'vue-router';
 import SlideTransition from './components/SlideTransition.vue';
-import { storeToRefs } from 'pinia';
-import { useProjectStore } from './store/globalStore';
 import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 
 
 const nav = ref<HTMLElement | null>(null);
 let navAnimationStarted = false;
-
-const store = useProjectStore();
-
-const { chosenProject, isAnimating } = storeToRefs(store)
-
 
 
 onMounted(() => {
@@ -114,8 +107,8 @@ onMounted(() => {
           navAnimationStarted = true;
           gsap.to(nav.value, {
             y: -nav.value.offsetHeight,
-            height:0,
-            overflow:"hidden",
+            height: 0,
+            overflow: "hidden",
             duration: 0.5,
             ease: 'power2.inOut',
             overwrite: 'auto', // Ensure only relevant animations run
@@ -131,8 +124,8 @@ onMounted(() => {
           navAnimationStarted = true;
           gsap.to(nav.value, {
             y: 0,
-            height:'auto',
-            overflow:"auto",
+            height: 'auto',
+            overflow: "auto",
             duration: 0.3,
             ease: 'power2.inOut',
             overwrite: 'auto',
