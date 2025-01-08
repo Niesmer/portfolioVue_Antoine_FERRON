@@ -23,11 +23,11 @@ export const projects: ProjectInterface[] = [
     tags: ["VR", "Unity", "Mobile", "C#"],
     imgs: [
       {
-        src: "/src/assets/images/halles/vr_session.webp",
+        src: "/images/halles/vr_session.webp",
         alt: "Session VR dans le jeu 'D'une Halles à l'autre'",
       },
       {
-        src: "/src/assets/images/halles/3d_model.webp",
+        src: "/images/halles/3d_model.webp",
         alt: "Modélisation 3D des Halles",
       },
     ],
@@ -66,11 +66,11 @@ export const projects: ProjectInterface[] = [
     tags: ["Android", "Java", "Game"],
     imgs: [
       {
-        src: "/src/assets/images/space-hokey/acceuil.webp",
+        src: "/images/space-hokey/acceuil.webp",
         alt: "Table de jeu de Space Hockey",
       },
       {
-        src: "/src/assets/images/space-hokey/gameplay.webp",
+        src: "/images/space-hokey/gameplay.webp",
         alt: "Gameplay de Space Hockey avec thème spatial",
       },
     ],
@@ -109,11 +109,11 @@ export const projects: ProjectInterface[] = [
     tags: ["Symfony", "React", "API", "Backend"],
     imgs: [
       {
-        src: "/src/assets/images/amzzon/admin_dashboard.webp",
+        src: "/images/amzzon/admin_dashboard.webp",
         alt: "Tableau de bord du backoffice",
       },
       {
-        src: "/src/assets/images/amzzon/api_endpoints.webp",
+        src: "/images/amzzon/api_endpoints.webp",
         alt: "Endpoints de l'API Symfony",
       },
     ],
@@ -152,11 +152,11 @@ export const projects: ProjectInterface[] = [
     tags: ["React", "Docker", "Figma", "Frontend"],
     imgs: [
       {
-        src: "/src/assets/images/wys/old_interface.webp",
+        src: "/images/wys/old_interface.webp",
         alt: "Ancienne interface utilisateur de la WebApp WYS",
       },
       {
-        src: "/src/assets/images/wys/interface.webp",
+        src: "/images/wys/interface.webp",
         alt: "Nouvelle interface utilisateur de la WebApp WYS",
       },
     ],
@@ -195,7 +195,7 @@ export const projects: ProjectInterface[] = [
     tags: ["JavaScript", "Leaflet", "API", "Team"],
     imgs: [
       {
-        src: "/src/assets/images/map-iut/interactive_map.webp",
+        src: "/images/map-iut/interactive_map.webp",
         alt: "Interface de la carte interactive",
       },
     ],
