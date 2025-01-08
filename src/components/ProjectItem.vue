@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import type { ProjectInterface } from '../assets/data/projects';
 import gsap from 'gsap';
-import { ref, watch } from 'vue';
+import { ref, watch, onMounted } from 'vue';
 
 const props = defineProps<{
     project: ProjectInterface,
@@ -25,8 +25,17 @@ const props = defineProps<{
 const content = ref<HTMLElement | null>(null);
 const button = ref<HTMLElement | null>(null);
 
+onMounted(() => {
+    if (props.isExpanded && content.value) {
+        enter(content.value);
+    }
+    if (button.value) {
+        popAnimation(button.value);
+    }
+});
+
 watch(() => props.isExpanded, (newVal) => {
-    if (content.value) {
+    if (content.value && button.value) {
         if (newVal) {
             popAnimation(button.value);
             enter(content.value);
