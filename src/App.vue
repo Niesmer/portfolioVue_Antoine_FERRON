@@ -84,7 +84,7 @@ import { ref, onMounted, onBeforeUnmount, Transition, type VNodeRef } from 'vue'
 import { gsap } from 'gsap';
 import { RouterLink, RouterView } from 'vue-router';
 import SlideTransition from './components/SlideTransition.vue';
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger"
 gsap.registerPlugin(ScrollTrigger);
 
 

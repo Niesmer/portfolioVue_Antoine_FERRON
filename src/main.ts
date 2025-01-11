@@ -1,13 +1,43 @@
 import "./assets/main.css";
-
-import { createApp } from "vue";
+import { ViteSSG } from "vite-ssg";
 import App from "./App.vue";
-import router from "./router";
+import type { RouteRecordRaw } from "vue-router";
+import routes from "./router";
 import { createPinia } from "pinia";
+import { projects } from "./assets/data/projects";
 
-const app = createApp(App);
+interface ImportMeta {
+  env: Record<string, any>;
+}
 
-app.use(createPinia());
-app.use(router);
+// Convert projects to route records
+const projectRoutes: RouteRecordRaw[] = projects.map((project) => ({
+  path: `/project/${project.link}`,
+  name: `project-${project.link}`,
+  component: () => import('./pages/project/[id].vue'),
+  props: (route) => ({
+    id: route.params.id,
+    project: projects.find(p => p.link === route.params.id)
+  }),
+  meta: {
+    title: project.titre
+  }
+}));
 
-app.mount("#app");
+// Combine static and dynamic routes
+const allRoutes = [...routes, ...projectRoutes];
+
+// Define your app with proper router configuration
+export const createApp = ViteSSG(
+  App,
+  {
+    routes: allRoutes,
+  },
+  ({ app, router, initialState }) => {
+    const pinia = createPinia();
+    app.use(pinia);
+
+    if (import.meta.env.SSR) initialState.pinia = pinia.state.value;
+    else pinia.state.value = initialState.pinia || {};
+  }
+);
