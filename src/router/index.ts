@@ -1,12 +1,21 @@
-import { createRouter, createWebHistory } from "vue-router/auto";
-import { routes } from "vue-router/auto-routes";
+import type { RouteRecordRaw } from 'vue-router'
 
-const router = createRouter({
-  history: createWebHistory(),
-  routes,
-  scrollBehavior(to, from, savedPosition) {
-    return savedPosition || { top: 0 };
+const routes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    name: 'home',
+    component: () => import('../pages/index.vue')
+  },
+  {
+    path: '/informations',
+    name: 'informations',
+    component: () => import('../pages/informations.vue')
+  },
+  {
+    path: '/project/:id',
+    name: 'project',
+    component: () => import('../pages/project/[id].vue')
   }
-});
+]
 
-export default router;
+export default routes

@@ -3,7 +3,7 @@ import { defineStore } from "pinia";
 
 export const useProjectStore = defineStore("project", {
   state: () => ({
-    chosenProject: undefined as string | undefined,
+    chosenProject: null as string | null,
     isAnimating: 1,
   }),
   actions: {
