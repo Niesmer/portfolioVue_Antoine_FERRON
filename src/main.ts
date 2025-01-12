@@ -18,7 +18,7 @@ interface ImportMeta {
 
 // Convert projects to route records
 const projectRoutes: RouteRecordRaw[] = projects.map((project) => ({
-  path: `/project/${project.link}`,
+  path: `/project/${project.link}/index`,
   name: `project-${project.link}`,
   component: () => import('./pages/project/[id].vue'),
   // Pass project link as id param
