@@ -7,7 +7,7 @@ const routes: RouteRecordRaw[] = [
     component: () => import('../pages/index.vue')
   },
   {
-    path: '/informations/index',
+    path: '/informations',
     name: 'informations',
     component: () => import('../pages/informations.vue')
   },
