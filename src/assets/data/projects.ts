@@ -147,16 +147,16 @@ export const projects: ProjectInterface[] = [
     titre: "WebApp WYS",
     description:
       "Version numérique du serious game Win Your Star, mêlant React et Docker.",
-    link: "wys-app",
+    link: "Wys-app",
     annee: 2024,
     tags: ["React", "Docker", "Figma", "Frontend"],
     imgs: [
       {
-        src: "/images/wys/old_interface.webp",
+        src: "/images/Wys/old_interface.webp",
         alt: "Ancienne interface utilisateur de la WebApp WYS",
       },
       {
-        src: "/images/wys/interface.webp",
+        src: "/images/Wys/interface.webp",
         alt: "Nouvelle interface utilisateur de la WebApp WYS",
       },
     ],
